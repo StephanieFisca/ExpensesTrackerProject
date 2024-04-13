@@ -60,7 +60,7 @@
             CatCB = new ComboBox();
             label14 = new Label();
             TotByCatLbl = new Label();
-            CountLbl = new Label();
+            pictureBox3 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -76,6 +76,7 @@
             panel11.SuspendLayout();
             panel12.SuspendLayout();
             panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -124,7 +125,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = SystemColors.Desktop;
+            panel2.BackColor = SystemColors.GradientActiveCaption;
             panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(MaxLbl);
             panel2.Controls.Add(panel3);
@@ -139,7 +140,7 @@
             MaxLbl.AutoSize = true;
             MaxLbl.Font = new Font("Tahoma", 16F, FontStyle.Regular, GraphicsUnit.Point);
             MaxLbl.ForeColor = SystemColors.ControlText;
-            MaxLbl.Location = new Point(3, 38);
+            MaxLbl.Location = new Point(74, 37);
             MaxLbl.Name = "MaxLbl";
             MaxLbl.Size = new Size(46, 27);
             MaxLbl.TabIndex = 15;
@@ -147,7 +148,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = SystemColors.ControlDark;
+            panel3.BackColor = Color.SeaShell;
             panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(label1);
             panel3.Dock = DockStyle.Top;
@@ -162,7 +163,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Tahoma", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ControlText;
-            label1.Location = new Point(2, -2);
+            label1.Location = new Point(63, -4);
             label1.Name = "label1";
             label1.Size = new Size(72, 18);
             label1.TabIndex = 14;
@@ -170,11 +171,11 @@
             // 
             // panel4
             // 
-            panel4.BackColor = SystemColors.Desktop;
+            panel4.BackColor = SystemColors.GradientActiveCaption;
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(MinLbl);
             panel4.Controls.Add(panel5);
-            panel4.Location = new Point(573, 69);
+            panel4.Location = new Point(252, 68);
             panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
             panel4.Size = new Size(211, 91);
@@ -185,7 +186,7 @@
             MinLbl.AutoSize = true;
             MinLbl.Font = new Font("Tahoma", 16F, FontStyle.Regular, GraphicsUnit.Point);
             MinLbl.ForeColor = SystemColors.ControlText;
-            MinLbl.Location = new Point(3, 37);
+            MinLbl.Location = new Point(85, 37);
             MinLbl.Name = "MinLbl";
             MinLbl.Size = new Size(46, 27);
             MinLbl.TabIndex = 15;
@@ -193,7 +194,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = SystemColors.ControlDark;
+            panel5.BackColor = Color.SeaShell;
             panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(label5);
             panel5.Dock = DockStyle.Top;
@@ -208,7 +209,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Tahoma", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = SystemColors.ControlText;
-            label5.Location = new Point(2, -2);
+            label5.Location = new Point(73, -3);
             label5.Name = "label5";
             label5.Size = new Size(66, 18);
             label5.TabIndex = 14;
@@ -216,7 +217,7 @@
             // 
             // panel6
             // 
-            panel6.BackColor = SystemColors.Desktop;
+            panel6.BackColor = SystemColors.GradientActiveCaption;
             panel6.BorderStyle = BorderStyle.FixedSingle;
             panel6.Controls.Add(AvgLbl);
             panel6.Controls.Add(panel7);
@@ -231,7 +232,7 @@
             AvgLbl.AutoSize = true;
             AvgLbl.Font = new Font("Tahoma", 16F, FontStyle.Regular, GraphicsUnit.Point);
             AvgLbl.ForeColor = SystemColors.ControlText;
-            AvgLbl.Location = new Point(2, 38);
+            AvgLbl.Location = new Point(74, 37);
             AvgLbl.Name = "AvgLbl";
             AvgLbl.Size = new Size(48, 27);
             AvgLbl.TabIndex = 15;
@@ -239,7 +240,7 @@
             // 
             // panel7
             // 
-            panel7.BackColor = SystemColors.ControlDark;
+            panel7.BackColor = Color.SeaShell;
             panel7.BorderStyle = BorderStyle.FixedSingle;
             panel7.Controls.Add(label7);
             panel7.Dock = DockStyle.Top;
@@ -254,7 +255,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Tahoma", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = SystemColors.ControlText;
-            label7.Location = new Point(2, -2);
+            label7.Location = new Point(73, -2);
             label7.Name = "label7";
             label7.Size = new Size(62, 18);
             label7.TabIndex = 14;
@@ -262,11 +263,11 @@
             // 
             // panel8
             // 
-            panel8.BackColor = SystemColors.Desktop;
+            panel8.BackColor = SystemColors.GradientActiveCaption;
             panel8.BorderStyle = BorderStyle.FixedSingle;
             panel8.Controls.Add(TotalLbl);
             panel8.Controls.Add(panel9);
-            panel8.Location = new Point(573, 178);
+            panel8.Location = new Point(252, 177);
             panel8.Margin = new Padding(2);
             panel8.Name = "panel8";
             panel8.Size = new Size(211, 91);
@@ -277,7 +278,7 @@
             TotalLbl.AutoSize = true;
             TotalLbl.Font = new Font("Tahoma", 16F, FontStyle.Regular, GraphicsUnit.Point);
             TotalLbl.ForeColor = SystemColors.ControlText;
-            TotalLbl.Location = new Point(-1, 37);
+            TotalLbl.Location = new Point(74, 37);
             TotalLbl.Name = "TotalLbl";
             TotalLbl.Size = new Size(61, 27);
             TotalLbl.TabIndex = 15;
@@ -285,7 +286,7 @@
             // 
             // panel9
             // 
-            panel9.BackColor = SystemColors.ControlDark;
+            panel9.BackColor = Color.SeaShell;
             panel9.BorderStyle = BorderStyle.FixedSingle;
             panel9.Controls.Add(label9);
             panel9.Dock = DockStyle.Top;
@@ -300,7 +301,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Tahoma", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = SystemColors.ControlText;
-            label9.Location = new Point(2, -2);
+            label9.Location = new Point(84, -2);
             label9.Name = "label9";
             label9.Size = new Size(41, 18);
             label9.TabIndex = 14;
@@ -308,7 +309,7 @@
             // 
             // panel10
             // 
-            panel10.BackColor = SystemColors.Desktop;
+            panel10.BackColor = SystemColors.GradientActiveCaption;
             panel10.BorderStyle = BorderStyle.FixedSingle;
             panel10.Controls.Add(HighestLbl);
             panel10.Controls.Add(panel11);
@@ -323,7 +324,7 @@
             HighestLbl.AutoSize = true;
             HighestLbl.Font = new Font("Tahoma", 16F, FontStyle.Regular, GraphicsUnit.Point);
             HighestLbl.ForeColor = SystemColors.ControlText;
-            HighestLbl.Location = new Point(1, 37);
+            HighestLbl.Location = new Point(65, 37);
             HighestLbl.Name = "HighestLbl";
             HighestLbl.Size = new Size(85, 27);
             HighestLbl.TabIndex = 15;
@@ -331,7 +332,7 @@
             // 
             // panel11
             // 
-            panel11.BackColor = SystemColors.ControlDark;
+            panel11.BackColor = Color.SeaShell;
             panel11.BorderStyle = BorderStyle.FixedSingle;
             panel11.Controls.Add(label11);
             panel11.Dock = DockStyle.Top;
@@ -346,7 +347,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Tahoma", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label11.ForeColor = SystemColors.ControlText;
-            label11.Location = new Point(2, -2);
+            label11.Location = new Point(44, -3);
             label11.Name = "label11";
             label11.Size = new Size(116, 18);
             label11.TabIndex = 14;
@@ -354,11 +355,11 @@
             // 
             // panel12
             // 
-            panel12.BackColor = SystemColors.Desktop;
+            panel12.BackColor = SystemColors.GradientActiveCaption;
             panel12.BorderStyle = BorderStyle.FixedSingle;
             panel12.Controls.Add(LowestLbl);
             panel12.Controls.Add(panel13);
-            panel12.Location = new Point(573, 286);
+            panel12.Location = new Point(251, 286);
             panel12.Margin = new Padding(2);
             panel12.Name = "panel12";
             panel12.Size = new Size(211, 91);
@@ -369,7 +370,7 @@
             LowestLbl.AutoSize = true;
             LowestLbl.Font = new Font("Tahoma", 16F, FontStyle.Regular, GraphicsUnit.Point);
             LowestLbl.ForeColor = SystemColors.ControlText;
-            LowestLbl.Location = new Point(0, 37);
+            LowestLbl.Location = new Point(61, 37);
             LowestLbl.Name = "LowestLbl";
             LowestLbl.Size = new Size(80, 27);
             LowestLbl.TabIndex = 15;
@@ -377,7 +378,7 @@
             // 
             // panel13
             // 
-            panel13.BackColor = SystemColors.ControlDark;
+            panel13.BackColor = Color.SeaShell;
             panel13.BorderStyle = BorderStyle.FixedSingle;
             panel13.Controls.Add(label13);
             panel13.Dock = DockStyle.Top;
@@ -392,7 +393,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Tahoma", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label13.ForeColor = SystemColors.ControlText;
-            label13.Location = new Point(2, -2);
+            label13.Location = new Point(45, -1);
             label13.Name = "label13";
             label13.Size = new Size(113, 18);
             label13.TabIndex = 14;
@@ -403,7 +404,7 @@
             CatCB.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             CatCB.FormattingEnabled = true;
             CatCB.Items.AddRange(new object[] { "Food", "Shopping", "Medical", "Household", "Travel", "Vehicle", "Other" });
-            CatCB.Location = new Point(234, 408);
+            CatCB.Location = new Point(79, 414);
             CatCB.Margin = new Padding(2);
             CatCB.Name = "CatCB";
             CatCB.Size = new Size(344, 29);
@@ -413,9 +414,10 @@
             // label14
             // 
             label14.AutoSize = true;
+            label14.BackColor = Color.White;
             label14.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.ForeColor = SystemColors.Desktop;
-            label14.Location = new Point(322, 381);
+            label14.ForeColor = SystemColors.ControlText;
+            label14.Location = new Point(181, 387);
             label14.Name = "label14";
             label14.Size = new Size(141, 19);
             label14.TabIndex = 19;
@@ -426,7 +428,7 @@
             TotByCatLbl.AutoSize = true;
             TotByCatLbl.Font = new Font("Tahoma", 16F, FontStyle.Regular, GraphicsUnit.Point);
             TotByCatLbl.ForeColor = SystemColors.ControlText;
-            TotByCatLbl.Location = new Point(355, 445);
+            TotByCatLbl.Location = new Point(211, 453);
             TotByCatLbl.Name = "TotByCatLbl";
             TotByCatLbl.Size = new Size(86, 27);
             TotByCatLbl.TabIndex = 21;
@@ -434,23 +436,22 @@
             TotByCatLbl.Visible = false;
             TotByCatLbl.Click += TotByCatLbl_Click;
             // 
-            // CountLbl
+            // pictureBox3
             // 
-            CountLbl.AutoSize = true;
-            CountLbl.Font = new Font("Tahoma", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            CountLbl.ForeColor = SystemColors.ControlText;
-            CountLbl.Location = new Point(574, 40);
-            CountLbl.Name = "CountLbl";
-            CountLbl.Size = new Size(68, 27);
-            CountLbl.TabIndex = 22;
-            CountLbl.Text = "Count";
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(478, 66);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(330, 311);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 22;
+            pictureBox3.TabStop = false;
             // 
             // Reports
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(832, 489);
-            Controls.Add(CountLbl);
+            Controls.Add(pictureBox3);
             Controls.Add(TotByCatLbl);
             Controls.Add(CatCB);
             Controls.Add(label14);
@@ -494,6 +495,7 @@
             panel12.PerformLayout();
             panel13.ResumeLayout(false);
             panel13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -531,6 +533,6 @@
         private ComboBox CatCB;
         private Label label14;
         private Label TotByCatLbl;
-        private Label CountLbl;
+        private PictureBox pictureBox3;
     }
 }

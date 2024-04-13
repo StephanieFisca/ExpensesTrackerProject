@@ -27,12 +27,12 @@ namespace ExpensesTracker
         private void InitializeReportData()
         {
             string username = Login.User;
-            MaxLbl.Text = "Rs" + _expenseRepository.GetMaxExpense(username);
-            MinLbl.Text = "Rs" + _expenseRepository.GetMinExpense(username);
-            TotalLbl.Text = "Rs" + _expenseRepository.GetTotalExpense(username);
+            MaxLbl.Text = _expenseRepository.GetMaxExpense(username) + " lei";
+            MinLbl.Text = _expenseRepository.GetMinExpense(username) + " lei";
+            TotalLbl.Text = _expenseRepository.GetTotalExpense(username) + " lei";
             HighestLbl.Text = _expenseRepository.GetBestCategory();
             LowestLbl.Text = _expenseRepository.GetWorstCategory();
-            AvgLbl.Text = "Rs" + _expenseRepository.GetAverageExpense(username);
+            AvgLbl.Text = _expenseRepository.GetAverageExpense(username) + " lei";
         }
 
         private void CatCB_SelectionChangeCommitted(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace ExpensesTracker
             try
             {
                 string totalExpenseByCategory = Convert.ToString(_expenseRepository.GetTotalExpenseByCategory(Login.User, selectedCategory));
-                TotByCatLbl.Text = totalExpenseByCategory;
+                TotByCatLbl.Text = totalExpenseByCategory + " lei";
                 TotByCatLbl.Visible = true;
             }
             catch (Exception ex)

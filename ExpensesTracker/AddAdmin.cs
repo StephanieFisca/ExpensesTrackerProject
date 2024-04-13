@@ -1,4 +1,6 @@
-﻿using ExpensesTracker.Repositories;
+﻿using ExpensesTracker.Factory.Interface;
+using ExpensesTracker.Factory;
+using ExpensesTracker.Repositories;
 using ExpensesTracker.RepositoryPattern.Interfaces;
 using System.Data.SqlClient;
 
@@ -7,11 +9,13 @@ namespace ExpensesTracker
     public partial class AddAdmin : Form
     {
         private readonly IAdminAccessRepository _adminAccessRepository;
+        private readonly IUserRepository _userRepository;
 
-        public AddAdmin(IAdminAccessRepository adminAccessRepository)
+        public AddAdmin(IAdminAccessRepository adminAccessRepository, IUserRepository userRepository)
         {
             InitializeComponent();
             _adminAccessRepository = adminAccessRepository;
+            _userRepository = userRepository;
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
@@ -32,7 +36,8 @@ namespace ExpensesTracker
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            IUserRepository userRepository = new SqlUserRepository(SqlConnectionManager.Instance);
+            AbstractRepositoryFactory factory = new RepositoryFactory(_userRepository);
+            IUserRepository userRepository = factory.CreateUserRepository();
             Users users = new Users(userRepository);
             users.Show();
             this.Hide();

@@ -18,8 +18,9 @@ namespace ExpensesTracker
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            IUserRepository userRepository = new SqlUserRepository(SqlConnectionManager.Instance);
-            Application.Run(new Splash(userRepository));
+            IUserRepository userRepository = new UserRepository();
+            AbstractRepositoryFactory abstractRepositoryFactory = new RepositoryFactory(userRepository);
+            Application.Run(new Splash(abstractRepositoryFactory));
         }
     }
 }

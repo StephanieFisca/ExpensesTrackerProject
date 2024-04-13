@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Users));
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label3 = new Label();
             pictureBox1 = new PictureBox();
@@ -45,8 +46,8 @@
             label1 = new Label();
             label6 = new Label();
             AddBtn = new Button();
-            UserDGV = new DataGridView();
             label8 = new Label();
+            UserDGV = new DataGridView();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -225,18 +226,6 @@
             AddBtn.UseVisualStyleBackColor = false;
             AddBtn.Click += AddBtn_Click;
             // 
-            // UserDGV
-            // 
-            UserDGV.BackgroundColor = SystemColors.Control;
-            UserDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            UserDGV.Location = new Point(0, 229);
-            UserDGV.Margin = new Padding(2);
-            UserDGV.Name = "UserDGV";
-            UserDGV.RowHeadersWidth = 62;
-            UserDGV.RowTemplate.Height = 33;
-            UserDGV.Size = new Size(832, 203);
-            UserDGV.TabIndex = 35;
-            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -249,14 +238,34 @@
             label8.Text = "Add new admin";
             label8.Click += label8_Click;
             // 
+            // UserDGV
+            // 
+            UserDGV.BackgroundColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Sylfaen", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            UserDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            UserDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            UserDGV.Location = new Point(0, 227);
+            UserDGV.Margin = new Padding(2);
+            UserDGV.Name = "UserDGV";
+            UserDGV.RowHeadersWidth = 62;
+            UserDGV.RowTemplate.Height = 33;
+            UserDGV.Size = new Size(832, 184);
+            UserDGV.TabIndex = 37;
+            // 
             // Users
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ButtonShadow;
+            BackColor = Color.White;
             ClientSize = new Size(832, 489);
-            Controls.Add(label8);
             Controls.Add(UserDGV);
+            Controls.Add(label8);
             Controls.Add(AddBtn);
             Controls.Add(label6);
             Controls.Add(label1);
@@ -302,7 +311,7 @@
         private Label label1;
         private Label label6;
         private Button AddBtn;
-        private DataGridView UserDGV;
         private Label label8;
+        private DataGridView UserDGV;
     }
 }

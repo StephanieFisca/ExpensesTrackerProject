@@ -44,7 +44,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.Desktop;
-            label4.Location = new Point(242, 127);
+            label4.Location = new Point(242, 175);
             label4.Name = "label4";
             label4.Size = new Size(82, 19);
             label4.TabIndex = 26;
@@ -56,7 +56,7 @@
             AddBtn.FlatStyle = FlatStyle.Flat;
             AddBtn.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             AddBtn.ForeColor = SystemColors.Control;
-            AddBtn.Location = new Point(196, 195);
+            AddBtn.Location = new Point(196, 265);
             AddBtn.Margin = new Padding(2);
             AddBtn.Name = "AddBtn";
             AddBtn.Size = new Size(178, 30);
@@ -69,7 +69,7 @@
             // 
             UPasswordTxt.BackColor = Color.LightGray;
             UPasswordTxt.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            UPasswordTxt.Location = new Point(120, 149);
+            UPasswordTxt.Location = new Point(120, 197);
             UPasswordTxt.Name = "UPasswordTxt";
             UPasswordTxt.PasswordChar = '*';
             UPasswordTxt.Size = new Size(330, 32);
@@ -91,7 +91,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.Desktop;
-            label2.Location = new Point(242, 53);
+            label2.Location = new Point(242, 78);
             label2.Name = "label2";
             label2.Size = new Size(86, 19);
             label2.TabIndex = 28;
@@ -100,7 +100,7 @@
             // UNameTxt
             // 
             UNameTxt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            UNameTxt.Location = new Point(120, 74);
+            UNameTxt.Location = new Point(120, 110);
             UNameTxt.Margin = new Padding(2);
             UNameTxt.Name = "UNameTxt";
             UNameTxt.Size = new Size(330, 29);
@@ -121,7 +121,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(573, 247);
+            ClientSize = new Size(589, 319);
             Controls.Add(pictureBox3);
             Controls.Add(label2);
             Controls.Add(UNameTxt);

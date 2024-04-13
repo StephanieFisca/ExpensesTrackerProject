@@ -17,7 +17,7 @@ namespace ExpensesTracker.UnitTests
         public void Timer_Tick_Event_Starts_And_Increments_ProgressBar()
         {
             var userRepositoryMock = new Mock<IUserRepository>();
-            var splashForm = new Splash(userRepositoryMock.Object);
+            var splashForm = new Splash(null);
             ProgressBar progressBar = splashForm.MyProgressBar;
             int expectedValue = 1;
 
@@ -30,7 +30,7 @@ namespace ExpensesTracker.UnitTests
         public void Timer_Tick_Event_Completes_ProgressBar_And_Shows_Login_Form()
         {
             var userRepositoryMock = new Mock<IUserRepository>();
-            var splashForm = new Splash(userRepositoryMock.Object);
+            var splashForm = new Splash(null);
 
             splashForm.Timer1_Tick(null, EventArgs.Empty);
 

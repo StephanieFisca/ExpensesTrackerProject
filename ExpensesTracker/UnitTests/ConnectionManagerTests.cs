@@ -15,11 +15,10 @@ namespace ExpensesTracker.Tests
         [Test]
         public void OpenConnection_ConnectionNotOpen_ConnectionOpened()
         {
-            // Arrange
             // Ensure connection is closed before the test
             SqlConnectionManager.CloseConnection();
 
-            // Act
+            //Call function
             SqlConnectionManager.OpenConnection();
 
             // Assert
@@ -29,11 +28,10 @@ namespace ExpensesTracker.Tests
         [Test]
         public void OpenConnection_ConnectionAlreadyOpen_ConnectionRemainsOpen()
         {
-            // Arrange
             // Ensure connection is already open before the test
             SqlConnectionManager.OpenConnection();
 
-            // Act
+            //Call function
             SqlConnectionManager.OpenConnection();
 
             // Assert
@@ -43,11 +41,10 @@ namespace ExpensesTracker.Tests
         [Test]
         public void CloseConnection_ConnectionOpen_ConnectionClosed()
         {
-            // Arrange
             // Ensure connection is open before the test
             SqlConnectionManager.OpenConnection();
 
-            // Act
+            //Call function
             SqlConnectionManager.CloseConnection();
 
             // Assert
@@ -57,11 +54,10 @@ namespace ExpensesTracker.Tests
         [Test]
         public void CloseConnection_ConnectionAlreadyClosed_ConnectionRemainsClosed()
         {
-            // Arrange
             // Ensure connection is already closed before the test
             SqlConnectionManager.CloseConnection();
 
-            // Act
+            //Call function
             SqlConnectionManager.CloseConnection();
 
             // Assert

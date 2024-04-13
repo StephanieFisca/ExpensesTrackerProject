@@ -30,8 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             panel1 = new Panel();
-            UNameLbl = new Label();
+            YearLbl = new Label();
             panel7 = new Panel();
+            label11 = new Label();
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
@@ -75,8 +76,8 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.Control;
-            panel1.Controls.Add(UNameLbl);
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(YearLbl);
             panel1.Controls.Add(panel7);
             panel1.Controls.Add(pictureBox7);
             panel1.Controls.Add(MonthLbl);
@@ -88,63 +89,76 @@
             panel1.Size = new Size(826, 467);
             panel1.TabIndex = 0;
             // 
-            // UNameLbl
+            // YearLbl
             // 
-            UNameLbl.AutoSize = true;
-            UNameLbl.Font = new Font("Tahoma", 12F, FontStyle.Underline, GraphicsUnit.Point);
-            UNameLbl.ForeColor = SystemColors.ActiveCaptionText;
-            UNameLbl.Location = new Point(704, 53);
-            UNameLbl.Name = "UNameLbl";
-            UNameLbl.Size = new Size(108, 19);
-            UNameLbl.TabIndex = 14;
-            UNameLbl.Text = "Add Expenses";
+            YearLbl.AutoSize = true;
+            YearLbl.Font = new Font("Rockwell", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            YearLbl.Location = new Point(255, 443);
+            YearLbl.Margin = new Padding(2, 0, 2, 0);
+            YearLbl.Name = "YearLbl";
+            YearLbl.Size = new Size(44, 19);
+            YearLbl.TabIndex = 15;
+            YearLbl.Text = "Year";
             // 
             // panel7
             // 
             panel7.BorderStyle = BorderStyle.FixedSingle;
+            panel7.Controls.Add(label11);
             panel7.Controls.Add(label9);
             panel7.Controls.Add(label8);
             panel7.Controls.Add(label7);
             panel7.Controls.Add(label6);
             panel7.Controls.Add(label5);
             panel7.Controls.Add(pictureBox8);
-            panel7.Location = new Point(47, 184);
+            panel7.Location = new Point(65, 105);
             panel7.Margin = new Padding(2);
             panel7.Name = "panel7";
-            panel7.Size = new Size(234, 222);
+            panel7.Size = new Size(213, 207);
             panel7.TabIndex = 13;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.White;
+            label11.Font = new Font("Rockwell", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.ForeColor = Color.SeaGreen;
+            label11.Location = new Point(106, 103);
+            label11.Name = "label11";
+            label11.Size = new Size(97, 25);
+            label11.TabIndex = 18;
+            label11.Text = ".Reports";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.BackColor = SystemColors.Control;
-            label9.Font = new Font("Rockwell", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.BackColor = Color.White;
+            label9.Font = new Font("Rockwell", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = Color.SeaGreen;
-            label9.Location = new Point(28, 143);
+            label9.Location = new Point(106, 144);
             label9.Name = "label9";
-            label9.Size = new Size(168, 25);
+            label9.Size = new Size(96, 16);
             label9.TabIndex = 17;
             label9.Text = ".View Analytics";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.BackColor = SystemColors.Control;
-            label8.Font = new Font("Rockwell", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.BackColor = Color.White;
+            label8.Font = new Font("Rockwell", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = Color.SeaGreen;
-            label8.Location = new Point(29, 115);
+            label8.Location = new Point(109, 128);
             label8.Name = "label8";
-            label8.Size = new Size(164, 25);
+            label8.Size = new Size(94, 16);
             label8.TabIndex = 16;
             label8.Text = ".View Statistics";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.BackColor = SystemColors.Control;
+            label7.BackColor = Color.White;
             label7.Font = new Font("Rockwell", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = Color.SeaGreen;
-            label7.Location = new Point(28, 82);
+            label7.Location = new Point(28, 78);
             label7.Name = "label7";
             label7.Size = new Size(175, 25);
             label7.TabIndex = 15;
@@ -153,10 +167,10 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.BackColor = SystemColors.Control;
+            label6.BackColor = Color.White;
             label6.Font = new Font("Rockwell", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = Color.SeaGreen;
-            label6.Location = new Point(28, 53);
+            label6.Location = new Point(37, 53);
             label6.Name = "label6";
             label6.Size = new Size(166, 25);
             label6.TabIndex = 14;
@@ -167,7 +181,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Rockwell", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.SeaGreen;
-            label5.Location = new Point(42, 8);
+            label5.Location = new Point(47, 15);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(116, 29);
@@ -177,7 +191,7 @@
             // pictureBox8
             // 
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(187, 187);
+            pictureBox8.Location = new Point(160, 171);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(42, 31);
             pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -187,9 +201,9 @@
             // pictureBox7
             // 
             pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(376, 90);
+            pictureBox7.Location = new Point(349, 56);
             pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(447, 374);
+            pictureBox7.Size = new Size(474, 408);
             pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox7.TabIndex = 12;
             pictureBox7.TabStop = false;
@@ -198,7 +212,7 @@
             // 
             MonthLbl.AutoSize = true;
             MonthLbl.Font = new Font("Rockwell", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            MonthLbl.Location = new Point(30, 115);
+            MonthLbl.Location = new Point(133, 435);
             MonthLbl.Margin = new Padding(2, 0, 2, 0);
             MonthLbl.Name = "MonthLbl";
             MonthLbl.Size = new Size(82, 27);
@@ -209,7 +223,7 @@
             // 
             DayLbl.AutoSize = true;
             DayLbl.Font = new Font("Rockwell", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            DayLbl.Location = new Point(30, 76);
+            DayLbl.Location = new Point(2, 428);
             DayLbl.Margin = new Padding(2, 0, 2, 0);
             DayLbl.Name = "DayLbl";
             DayLbl.Size = new Size(73, 36);
@@ -449,6 +463,7 @@
         private Label label5;
         private PictureBox pictureBox8;
         private PictureBox pictureBox7;
-        private Label UNameLbl;
+        private Label YearLbl;
+        private Label label11;
     }
 }

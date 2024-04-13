@@ -1,9 +1,11 @@
+using ExpensesTracker.Factory;
+using ExpensesTracker.Factory.Interface;
 using ExpensesTracker.Repositories;
 using ExpensesTracker.RepositoryPattern.Interfaces;
 using System;
 using System.Data.SqlClient;
-using System.Drawing; // Add this namespace for Color
-using System.Windows.Forms; // Add this namespace for Form
+using System.Drawing;
+using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
 
 namespace ExpensesTracker
@@ -14,12 +16,12 @@ namespace ExpensesTracker
         private const int ProgressBarStep = 1; // Progress bar step value
         public ProgressBar MyProgressBar { get; }
 
-        private readonly IUserRepository _userRepository;
+        private readonly AbstractRepositoryFactory _repositoryFactory;
 
-        public Splash(IUserRepository userRepository)
+        public Splash(AbstractRepositoryFactory repositoryFactory)
         {
             InitializeComponent();
-            _userRepository = userRepository;
+            _repositoryFactory = repositoryFactory;
             MyProgressBar = MyProgress;
             InitializeTimer();
         }
@@ -47,11 +49,11 @@ namespace ExpensesTracker
             }
         }
 
-
         private void ShowLoginForm()
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Data Source=ST-ASUS;Initial Catalog=ExpensesDb;Integrated Security=True");
-            Login login = new Login(_userRepository);
+            SqlConnection sqlConnection = SqlConnectionManager.Instance;
+            IUserRepository userRepository = _repositoryFactory.CreateUserRepository();
+            Login login = new Login(userRepository);
             login.Show();
             this.Hide();
         }

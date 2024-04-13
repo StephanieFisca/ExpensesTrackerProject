@@ -1,4 +1,6 @@
-﻿using ExpensesTracker.Repositories;
+﻿using ExpensesTracker.Factory.Interface;
+using ExpensesTracker.Factory;
+using ExpensesTracker.Repositories;
 using ExpensesTracker.RepositoryPattern.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -16,27 +18,29 @@ namespace ExpensesTracker
     public partial class MainMenu : Form
     {
         private readonly IUserRepository _userRepository;
-        private readonly IExpenseRepository _expenseRepository;
 
-        public MainMenu(IUserRepository userRepository, IExpenseRepository expenseRepository)
+        public MainMenu(IUserRepository userRepository)
         {
             InitializeComponent();
             _userRepository = userRepository;
-            _expenseRepository = expenseRepository;
-            DayLbl.Text = DateTime.Today.Day.ToString();
-            MonthLbl.Text = DateTime.Today.Month.ToString();
-            UNameLbl.Text = Login.User;
+            DayLbl.Text = "Day: " + DateTime.Today.Day.ToString();
+            MonthLbl.Text = "Month: " + DateTime.Today.Month.ToString();
+            YearLbl.Text = "Year: " + DateTime.Today.Year.ToString();
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            Expenses expenses = new Expenses(_expenseRepository);
+            AbstractRepositoryFactory factory = new RepositoryFactory(_userRepository);
+            IExpenseRepository expenseRepository = factory.CreateExpenseRepository();
+            Expenses expenses = new Expenses(expenseRepository);
             expenses.Show();
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-            ViewExpenses viewExpenses = new ViewExpenses(_expenseRepository);
+            AbstractRepositoryFactory factory = new RepositoryFactory(_userRepository);
+            IExpenseRepository expenseRepository = factory.CreateExpenseRepository();
+            ViewExpenses viewExpenses = new ViewExpenses(expenseRepository);
             viewExpenses.Show();
         }
 
@@ -49,7 +53,9 @@ namespace ExpensesTracker
 
         private void label2_Click(object sender, EventArgs e)
         {
-            Reports reports = new Reports(_expenseRepository);
+            AbstractRepositoryFactory factory = new RepositoryFactory(_userRepository);
+            IExpenseRepository expenseRepository = factory.CreateExpenseRepository();
+            Reports reports = new Reports(expenseRepository);
             reports.Show();
         }
 

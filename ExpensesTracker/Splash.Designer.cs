@@ -35,16 +35,10 @@
             pictureBox2 = new PictureBox();
             label1 = new Label();
             panel1 = new Panel();
-            pictureBox3 = new PictureBox();
             PercentageLbl = new Label();
             MyProgress = new ProgressBar();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
-            // 
-            // timer1
-            // 
             // 
             // label2
             // 
@@ -81,22 +75,11 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.Desktop;
-            panel1.Controls.Add(pictureBox3);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(184, 333);
             panel1.TabIndex = 14;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(53, 12);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(74, 67);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 17;
-            pictureBox3.TabStop = false;
             // 
             // PercentageLbl
             // 
@@ -135,8 +118,6 @@
             Text = "Form1";
             Load += Splash_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -148,7 +129,6 @@
         private PictureBox pictureBox2;
         private Label label1;
         private Panel panel1;
-        private PictureBox pictureBox3;
         private Label PercentageLbl;
         private ProgressBar MyProgress;
     }

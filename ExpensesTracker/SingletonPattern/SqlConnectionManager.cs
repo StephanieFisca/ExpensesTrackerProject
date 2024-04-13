@@ -13,7 +13,7 @@ namespace ExpensesTracker.Repositories
         // Property to access the singleton instance
         public static SqlConnection Instance => _sqlConnection;
 
-        // Optional method to open the connection
+        // Method to open connection
         public static void OpenConnection()
         {
             if (_sqlConnection.State != System.Data.ConnectionState.Open)
@@ -22,7 +22,7 @@ namespace ExpensesTracker.Repositories
             }
         }
 
-        // Optional method to close the connection
+        //Method to close connection
         public static void CloseConnection()
         {
             if (_sqlConnection.State != System.Data.ConnectionState.Closed)

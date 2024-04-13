@@ -5,13 +5,13 @@ using System.Data.SqlClient;
 
 namespace ExpensesTracker.Repositories
 {
-    public class SqlUserRepository : IUserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly SqlConnection _sqlConnection;
 
-        public SqlUserRepository(SqlConnection sqlConnection)
+        public UserRepository()
         {
-            _sqlConnection = sqlConnection;
+            _sqlConnection = SqlConnectionManager.Instance;
         }
 
         public bool ValidateUserCredentials(string username, string password)
@@ -40,11 +40,7 @@ namespace ExpensesTracker.Repositories
             User user = null;
             if (reader.Read())
             {
-                // Assuming User class has properties corresponding to UserTbl columns
-                user = new User
-                {
-                    // Populate user properties from reader
-                };
+                user = new User{};
             }
 
             reader.Close();

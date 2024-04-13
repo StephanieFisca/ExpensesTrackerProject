@@ -3,15 +3,16 @@ using System.Data.SqlClient;
 
 namespace ExpensesTracker.Repositories
 {
-    public class SqlAdminAccessRepository : IAdminAccessRepository
+    public class AdminAccessRepository : IAdminAccessRepository
     {
         private readonly SqlConnection _sqlConnection;
 
-        public SqlAdminAccessRepository(SqlConnection sqlConnection)
+        public AdminAccessRepository()
         {
-            _sqlConnection = sqlConnection;
+            _sqlConnection = SqlConnectionManager.Instance;
         }
 
+        //Add an admin user to database
         public void AddAdmin(string username, string password)
         {
             _sqlConnection.Open();
@@ -22,6 +23,7 @@ namespace ExpensesTracker.Repositories
             _sqlConnection.Close();
         }
 
+        //Verify admin username and password
         public bool ValidateAdminCredentials(string username, string password)
         {
             _sqlConnection.Open();
@@ -29,12 +31,12 @@ namespace ExpensesTracker.Repositories
             command.Parameters.AddWithValue("@username", username);
             command.Parameters.AddWithValue("@password", password);
 
+            //retrieves the count of the matching admin credentials
             int count = (int)command.ExecuteScalar();
 
             _sqlConnection.Close();
 
-            // If count is 1, user credentials are valid
-            // otherwise, they are invalid
+            //If 1, user credentials are valid
             return count == 1;
         }
 

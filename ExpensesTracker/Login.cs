@@ -3,14 +3,6 @@ using ExpensesTracker.Factory;
 using ExpensesTracker.Repositories;
 using ExpensesTracker.RepositoryPattern.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ExpensesTracker
@@ -41,10 +33,8 @@ namespace ExpensesTracker
 
             if (isValidUser)
             {
-                // Example usage
-                IRepositoryFactory factory = new SqlRepositoryFactory(SqlConnectionManager.Instance, _userRepository);
-                IExpenseRepository expenseRepository = factory.CreateExpenseRepository();
-                MainMenu mainMenu = new MainMenu(_userRepository, expenseRepository);
+                // Use the repository factory to create instances of repositories
+                MainMenu mainMenu = new MainMenu(_userRepository);
                 Login.User = username;
                 mainMenu.Show();
                 this.Hide();
@@ -62,10 +52,11 @@ namespace ExpensesTracker
 
         private void label2_Click(object sender, EventArgs e)
         {
-            IRepositoryFactory factory = new SqlRepositoryFactory(SqlConnectionManager.Instance, _userRepository);
+            // Use the repository factory to create instances of repositories
+            AbstractRepositoryFactory factory = new RepositoryFactory(_userRepository);
             IAdminAccessRepository adminAccessRepository = factory.CreateAdminAccessRepository();
-            AdminLogin mainMenu = new AdminLogin(adminAccessRepository);
-            mainMenu.Show();
+            AdminLogin adminLogin = new AdminLogin(adminAccessRepository, _userRepository);
+            adminLogin.Show();
             this.Hide();
         }
     }

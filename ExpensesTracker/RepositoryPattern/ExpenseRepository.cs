@@ -11,17 +11,18 @@ using System.Threading.Tasks;
 
 namespace ExpensesTracker.Repositories
 {
-    public class SqlExpenseRepository : IExpenseRepository
+    public class ExpenseRepository : IExpenseRepository
     {
         private readonly SqlConnection _sqlConnection;
         private readonly IUserRepository _userRepository;
 
-        public SqlExpenseRepository(SqlConnection sqlConnection, IUserRepository userRepository)
+        public ExpenseRepository(IUserRepository userRepository)
         {
-            _sqlConnection = sqlConnection;
+            _sqlConnection = SqlConnectionManager.Instance;
             _userRepository = userRepository;
         }
 
+        //Get most expensive expense
         public decimal GetMaxExpense(string username)
         {
             _sqlConnection.Open();
@@ -30,6 +31,8 @@ namespace ExpensesTracker.Repositories
             _sqlConnection.Close();
             return maxExpense;
         }
+
+        //Get cheapest expense
         public decimal GetMinExpense(string username)
         {
             _sqlConnection.Open();
@@ -39,6 +42,7 @@ namespace ExpensesTracker.Repositories
             return minExpense;
         }
 
+        //Get total expenses
         public decimal GetTotalExpense(string username)
         {
             _sqlConnection.Open();
@@ -48,6 +52,7 @@ namespace ExpensesTracker.Repositories
             return totalExpense;
         }
 
+        //Get total expense for a given category (ex medical)
         public decimal GetTotalExpenseByCategory(string username, string selectedCat)
         {
             try
@@ -67,8 +72,7 @@ namespace ExpensesTracker.Repositories
                 }
                 else
                 {
-                    // If DBNull, return 0 or throw an exception, depending on your requirement
-                    // Here, I'm returning 0
+                    // If DBNull, return 0
                     return 0;
                 }
             }

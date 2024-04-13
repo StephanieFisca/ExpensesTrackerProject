@@ -87,20 +87,18 @@ namespace ExpensesTracker
 
         private void label6_Click(object sender, EventArgs e)
         {
-            IRepositoryFactory factory = new SqlRepositoryFactory(SqlConnectionManager.Instance, _userRepository);
+            AbstractRepositoryFactory factory = new RepositoryFactory(_userRepository);
             IExpenseRepository expenseRepository = factory.CreateExpenseRepository();
-            AdminExpenses adminExpenses = new AdminExpenses(expenseRepository);
+            AdminExpenses adminExpenses = new AdminExpenses(expenseRepository, _userRepository);
             adminExpenses.Show();
             this.Hide();
         }
 
         private void label8_Click(object sender, EventArgs e)
         {
-            IRepositoryFactory factory = new SqlRepositoryFactory(SqlConnectionManager.Instance, _userRepository);
-            //IExpenseRepository expenseRepository = factory.CreateExpenseRepository();
-
+            AbstractRepositoryFactory factory = new RepositoryFactory(_userRepository);
             IAdminAccessRepository adminAccessRepository = factory.CreateAdminAccessRepository();
-            AddAdmin addAdmin = new AddAdmin(adminAccessRepository);
+            AddAdmin addAdmin = new AddAdmin(adminAccessRepository, _userRepository);
             addAdmin.Show();
             this.Hide();
         }
