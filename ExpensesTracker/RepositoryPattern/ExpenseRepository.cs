@@ -145,6 +145,7 @@ namespace ExpensesTracker.Repositories
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             _sqlConnection.Close();
+
             return dataTable;
         }
         public DataTable GetAllExpenses()
@@ -155,6 +156,7 @@ namespace ExpensesTracker.Repositories
             var dataset = new DataSet();
             sqlDataAdapter.Fill(dataset);
             _sqlConnection.Close();
+
             return dataset.Tables[0];
         }
 
