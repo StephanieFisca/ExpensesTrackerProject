@@ -1,0 +1,29 @@
+# Ignore VS and VS Code files
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+
+# VS Test files
+*.testlog
+*.coverage
+*.vsp
+*.vspx
+*.psess
+
+# Rider and VS-specific cache
+.idea/
+*.dbmdl
+*.db
+*.db-shm
+*.db-wal
+*.DS_Store
+*.dtbcache.v2
+
+# Ignore GitHub Actions temporary files
+.github/workflows/*.log
