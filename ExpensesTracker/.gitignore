@@ -1,4 +1,4 @@
-# Ignore VS and VS Code files
+# VS & VS Code junk
 .vscode/
 *.suo
 *.user
@@ -15,15 +15,4 @@ obj/
 *.vsp
 *.vspx
 *.psess
-
-# Rider and VS-specific cache
-.idea/
-*.dbmdl
-*.db
-*.db-shm
-*.db-wal
-*.DS_Store
-*.dtbcache.v2
-
-# Ignore GitHub Actions temporary files
-.github/workflows/*.log
+*.vs/
