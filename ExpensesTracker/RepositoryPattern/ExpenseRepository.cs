@@ -27,7 +27,8 @@ namespace ExpensesTracker.Repositories
         {
             _sqlConnection.Open();
             SqlCommand command = new SqlCommand($"SELECT MAX(ExpAmt) FROM ExpenseTbl WHERE ExpUser='{username}'", _sqlConnection);
-            decimal maxExpense = Convert.ToDecimal(command.ExecuteScalar());
+            object? result = command.ExecuteScalar();
+            decimal maxExpense = result != null && result != DBNull.Value ? Convert.ToDecimal(result) : 0;
             _sqlConnection.Close();
             return maxExpense;
         }
@@ -90,7 +91,8 @@ namespace ExpensesTracker.Repositories
         {
             _sqlConnection.Open();
             SqlCommand command = new SqlCommand("SELECT ExpCat FROM ExpenseTbl WHERE ExpAmt = (SELECT MAX(ExpAmt) FROM ExpenseTbl)", _sqlConnection);
-            string bestCategory = command.ExecuteScalar().ToString();
+            object? result = command.ExecuteScalar();
+            string bestCategory = result != null && result != DBNull.Value ? result.ToString() ?? "N/A" : "N/A";
             _sqlConnection.Close();
             return bestCategory;
         }

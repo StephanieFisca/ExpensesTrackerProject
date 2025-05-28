@@ -26,7 +26,7 @@ namespace ExpensesTracker
 
         private void InitializeReportData()
         {
-            string username = Login.User;
+            string username = Login.User ?? string.Empty;
             MaxLbl.Text = _expenseRepository.GetMaxExpense(username) + " lei";
             MinLbl.Text = _expenseRepository.GetMinExpense(username) + " lei";
             TotalLbl.Text = _expenseRepository.GetTotalExpense(username) + " lei";
@@ -47,18 +47,24 @@ namespace ExpensesTracker
 
         private void GetTotalExpenseByCategory()
         {
-            string selectedCategory = CatCB.SelectedItem.ToString();
-
-            try
+            if (CatCB.SelectedItem is string selectedCategory)
             {
-                string totalExpenseByCategory = Convert.ToString(_expenseRepository.GetTotalExpenseByCategory(Login.User, selectedCategory));
-                TotByCatLbl.Text = totalExpenseByCategory + " lei";
-                TotByCatLbl.Visible = true;
+                try
+                {
+                    string username = Login.User ?? string.Empty;
+                    string totalExpenseByCategory = Convert.ToString(_expenseRepository.GetTotalExpenseByCategory(username, selectedCategory));
+                    TotByCatLbl.Text = totalExpenseByCategory + " lei";
+                    TotByCatLbl.Visible = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error occurred while retrieving total expense for category: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                // Handle the exception gracefully
-                MessageBox.Show($"Error occurred while retrieving total expense for category: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TotByCatLbl.Text = "Nicio categorie selectată";
+                TotByCatLbl.Visible = true;
             }
         }
 
@@ -97,6 +103,11 @@ namespace ExpensesTracker
         }
 
         private void TotByCatLbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Reports_Load(object sender, EventArgs e)
         {
 
         }

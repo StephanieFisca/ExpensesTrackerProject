@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExpensesTracker.Factory.Interface;
 
 namespace ExpensesTracker.UnitTests
 {
@@ -14,29 +15,37 @@ namespace ExpensesTracker.UnitTests
     public class SplashTests
     {
         [Test]
-        public void Timer_Tick_Event_Starts_And_Increments_ProgressBar()
+        public void Timer_Tick_Increments_ProgressBar()
         {
-            var userRepositoryMock = new Mock<IUserRepository>();
-            var splashForm = new Splash(null);
-            ProgressBar progressBar = splashForm.MyProgressBar;
-            int expectedValue = 1;
+            var factoryMock = new Mock<AbstractRepositoryFactory>();
+            factoryMock.Setup(f => f.CreateUserRepository())
+                       .Returns(new Mock<IUserRepository>().Object);
 
-            splashForm.Timer1_Tick(null, EventArgs.Empty);
+            var splash = new Splash(factoryMock.Object);
+            ProgressBar progressBar = splash.MyProgressBar;
+            int initialValue = progressBar.Value;
 
-            Assert.That(expectedValue, Is.EqualTo(progressBar.Value)); ;
+            splash.Timer1_Tick(new System.Windows.Forms.Timer(), EventArgs.Empty);
+
+            Assert.That(progressBar.Value, Is.EqualTo(initialValue + 1));
         }
-
         [Test]
         public void Timer_Tick_Event_Completes_ProgressBar_And_Shows_Login_Form()
         {
-            var userRepositoryMock = new Mock<IUserRepository>();
-            var splashForm = new Splash(null);
+            var factoryMock = new Mock<AbstractRepositoryFactory>();
+            factoryMock.Setup(f => f.CreateUserRepository())
+                       .Returns(new Mock<IUserRepository>().Object);
 
-            splashForm.Timer1_Tick(null, EventArgs.Empty);
+            var splashForm = new Splash(factoryMock.Object);
 
-            ClassicAssert.IsFalse(splashForm.Visible);
+            // Setăm progresul aproape de final pentru a forța închiderea formularului
+            splashForm.MyProgressBar.Value = 99;
 
+            // Simulăm un tick al timerului care finalizează progresul
+            splashForm.Timer1_Tick(new System.Windows.Forms.Timer(), EventArgs.Empty);
+
+            // Verificăm că formularul Splash a fost ascuns
+            Assert.That(splashForm.Visible, Is.False);
         }
-
     }
 }

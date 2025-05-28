@@ -467,6 +467,7 @@
             Name = "Reports";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Reports";
+            Load += Reports_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
