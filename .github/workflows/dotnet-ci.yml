@@ -23,8 +23,6 @@ jobs:
         run: dotnet --version
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Install dependencies
-        run: dotnet add package Newtonsoft.Json --version 12.0
       - name: Build
         run: dotnet build --no-restore
       - name: Test with dotnet
