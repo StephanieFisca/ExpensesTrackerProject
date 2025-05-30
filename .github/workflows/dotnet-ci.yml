@@ -41,3 +41,9 @@ jobs:
         run: |
           mkdir deployed
           Copy-Item "ExpensesTracker\bin\Release\net6.0-windows\*" -Destination "deployed" -Recurse
+
+      - name: Upload deployed files
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployed-files
+          path: deployed/
