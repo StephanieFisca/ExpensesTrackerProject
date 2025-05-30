@@ -1,4 +1,4 @@
-name: .NET Build & Test
+name: Medical Data App
 
 on:
   push:
@@ -26,6 +26,7 @@ jobs:
         run: dotnet build --no-restore --configuration Release
 
       - name: Run tests
+        working-directory: ./ExpensesTracker
         run: dotnet test --no-build --verbosity normal
 
       - name: Simulate deployment (copy build to folder)
