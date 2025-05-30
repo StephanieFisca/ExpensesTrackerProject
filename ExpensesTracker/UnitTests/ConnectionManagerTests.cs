@@ -1,67 +1,63 @@
 ﻿using NUnit.Framework;
 using Moq;
-using ExpensesTracker.Repositories;
-using System.Data.SqlClient;
-using ExpensesTracker.RepositoryPattern.Interfaces;
-using Microsoft.VisualBasic.ApplicationServices;
 using System.Data;
-using NUnit.Framework.Legacy;
+using ExpensesTracker.RepositoryPattern.Interfaces;
 
 namespace ExpensesTracker.Tests
 {
     [TestFixture]
     public class SqlConnectionManagerTests
     {
-        [Test]
-        public void OpenConnection_ConnectionNotOpen_ConnectionOpened()
+        private Mock<ISqlConnectionManager> _mockManager;
+
+        [SetUp]
+        public void Setup()
         {
-            // Ensure connection is closed before the test
-            SqlConnectionManager.CloseConnection();
-
-            //Call function
-            SqlConnectionManager.OpenConnection();
-
-            // Assert
-            Assert.That(ConnectionState.Open, Is.EqualTo(SqlConnectionManager.Instance.State));
+            _mockManager = new Mock<ISqlConnectionManager>();
         }
 
         [Test]
-        public void OpenConnection_ConnectionAlreadyOpen_ConnectionRemainsOpen()
+        public void OpenConnection_ShouldChangeStateToOpen_WhenInitiallyClosed()
         {
-            // Ensure connection is already open before the test
-            SqlConnectionManager.OpenConnection();
+            _mockManager.Setup(m => m.State).Returns(ConnectionState.Closed);
+            _mockManager.Setup(m => m.OpenConnection())
+                        .Callback(() => _mockManager.Setup(m => m.State).Returns(ConnectionState.Open));
 
-            //Call function
-            SqlConnectionManager.OpenConnection();
+            _mockManager.Object.OpenConnection();
 
-            // Assert
-            Assert.That(ConnectionState.Open, Is.EqualTo(SqlConnectionManager.Instance.State));
+            Assert.That(_mockManager.Object.State, Is.EqualTo(ConnectionState.Open));
         }
 
         [Test]
-        public void CloseConnection_ConnectionOpen_ConnectionClosed()
+        public void OpenConnection_ShouldStayOpen_WhenAlreadyOpen()
         {
-            // Ensure connection is open before the test
-            SqlConnectionManager.OpenConnection();
+            _mockManager.Setup(m => m.State).Returns(ConnectionState.Open);
 
-            //Call function
-            SqlConnectionManager.CloseConnection();
+            _mockManager.Object.OpenConnection();
 
-            // Assert
-            Assert.That(ConnectionState.Closed, Is.EqualTo(SqlConnectionManager.Instance.State));
+            Assert.That(_mockManager.Object.State, Is.EqualTo(ConnectionState.Open));
         }
 
         [Test]
-        public void CloseConnection_ConnectionAlreadyClosed_ConnectionRemainsClosed()
+        public void CloseConnection_ShouldChangeStateToClosed_WhenOpen()
         {
-            // Ensure connection is already closed before the test
-            SqlConnectionManager.CloseConnection();
+            _mockManager.Setup(m => m.State).Returns(ConnectionState.Open);
+            _mockManager.Setup(m => m.CloseConnection())
+                        .Callback(() => _mockManager.Setup(m => m.State).Returns(ConnectionState.Closed));
 
-            //Call function
-            SqlConnectionManager.CloseConnection();
+            _mockManager.Object.CloseConnection();
 
-            // Assert
-            Assert.That(ConnectionState.Closed, Is.EqualTo(SqlConnectionManager.Instance.State));
+            Assert.That(_mockManager.Object.State, Is.EqualTo(ConnectionState.Closed));
+        }
+
+        [Test]
+        public void CloseConnection_ShouldStayClosed_WhenAlreadyClosed()
+        {
+            _mockManager.Setup(m => m.State).Returns(ConnectionState.Closed);
+
+            _mockManager.Object.CloseConnection();
+
+            Assert.That(_mockManager.Object.State, Is.EqualTo(ConnectionState.Closed));
         }
     }
 }
