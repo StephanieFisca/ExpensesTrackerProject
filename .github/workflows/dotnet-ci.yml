@@ -22,7 +22,7 @@ jobs:
         run: dotnet --version
 
       - name: Restore dependencies
-        run: dotnet restore ExpensesTracker.sln
+        run: dotnet restore ExpensesTracker.sln --verbosity detailed
 
       - name: Build
         run: dotnet build ExpensesTracker.sln --no-restore
