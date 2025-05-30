@@ -26,10 +26,10 @@ jobs:
         run: dotnet restore ExpensesTracker.sln
 
       - name: Build
-        run: dotnet build ExpensesTracker.sln --no-restore
+        run: dotnet build --configuration Release --no-restore
 
-      - name: Run tests
-        run: dotnet test ExpensesTracker.sln --no-restore --logger trx --results-directory "TestResults"
+      - name: Run Tests
+        run: dotnet test --configuration Release --no-restore --logger trx --results-directory "TestResults"
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
@@ -37,7 +37,7 @@ jobs:
           name: test-results
           path: TestResults
 
-      - name: Simulate deployment
+      - name: Simulate deployment (copy build to folder)
         run: |
           mkdir deployed
-          copy ExpensesTracker\bin\Release\net6.0-windows\* deployed\
+          Copy-Item "ExpensesTracker\bin\Release\net6.0-windows\*" -Destination "deployed" -Recurse
