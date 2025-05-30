@@ -8,36 +8,36 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        dotnet-version: ["6.0.x"]
 
+    steps:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: ${{ matrix.dotnet-version }}
 
-      - name: Display .NET version
-        run: dotnet --version
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Restore dependencies
-        run: dotnet restore ExpensesTracker.sln --verbosity detailed
+        run: dotnet restore ExpensesTracker.sln
 
       - name: Build
         run: dotnet build ExpensesTracker.sln --no-restore
 
-      - name: Run Tests
+      - name: Run tests
         run: dotnet test ExpensesTracker.sln --no-restore --logger trx --results-directory "TestResults"
 
-      - name: Upload Test Results
+      - name: Upload test results
         uses: actions/upload-artifact@v4
-        if: ${{ always() }}
         with:
-          name: dotnet-results
+          name: test-results
           path: TestResults
 
-      - name: Simulate deployment (copy build to folder)
+      - name: Simulate deployment
         run: |
           mkdir deployed
-          cp -r ExpensesTracker/bin/Release/net6.0/* deployed/
+          copy ExpensesTracker\bin\Release\net6.0-windows\* deployed\
