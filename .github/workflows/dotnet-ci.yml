@@ -9,37 +9,33 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        dotnet-version: ["3.1.x", "6.0.x"]
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup .NET ${{ matrix.dotnet-version }}
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+          dotnet-version: 6.0.x
 
-      - name: Display dotnet version
+      - name: Display .NET version
         run: dotnet --version
 
       - name: Restore dependencies
-        run: dotnet restore ./ExpensesTracker.sln
+        run: dotnet restore ExpensesTracker.sln
 
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build ExpensesTracker.sln --no-restore
 
-      - name: Test with dotnet
-        run: dotnet test --no-restore --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
+      - name: Run Tests
+        run: dotnet test ExpensesTracker.sln --no-restore --logger trx --results-directory "TestResults"
 
-      - name: Upload dotnet test results
+      - name: Upload Test Results
         uses: actions/upload-artifact@v4
-        with:
-          name: dotnet-results-${{ matrix.dotnet-version }}
-          path: TestResults-${{ matrix.dotnet-version }}
         if: ${{ always() }}
+        with:
+          name: dotnet-results
+          path: TestResults
 
       - name: Simulate deployment (copy build to folder)
         run: |
